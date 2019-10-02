@@ -99,6 +99,10 @@ RUN ${PYTHON} -m ipykernel.kernelspec
 
 RUN ${PIP} install torch torchvision tensorboardX
 
+RUN ${PIP} install jupyterthemes
+
+RUN jt -t chesterish -T -N
+
 RUN echo "c.NotebookApp.password='sha1:9f94b40a5367:4ac7ee93d6115e200be852302429db4816bcfd61'">>/root/.jupyter/jupyter_notebook_config.py
 
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter notebook --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root"]
