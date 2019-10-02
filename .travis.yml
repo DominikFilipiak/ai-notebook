@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  - docker build -t pytorch-notebook .
+  - docker build -t ai-notebook .
   - docker run -d -p 127.0.0.1:8888:8888 --name ai-notebook ai-notebook
 
 script:
