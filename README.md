@@ -15,7 +15,7 @@
 ------------
 Python 3 + Jupyter Notebook (with themes) + TensorFlow + PyTorch + TensorBoard + CUDA/CuDNN
 
-Excellent for AI research in Python. The Dockerfile is heavily based on [TensorFlow dockerfiles](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles).
+Excellent for AI research on GPU(s) in Python. The Dockerfile is heavily based on [TensorFlow dockerfiles](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles).
 
 ## Prerequisites
 Requires Docker (>=19.03), NVIDIA driver and nvidia-docker (see how to install it [here](https://github.com/NVIDIA/nvidia-docker)). Tested on Debian 10, should work on Ubuntu, CentOS and RHEL as well.
