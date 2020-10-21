@@ -43,7 +43,7 @@ RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/lib
     && echo "/usr/local/cuda/lib64/stubs" > /etc/ld.so.conf.d/z-cuda-stubs.conf \
     && ldconfig
 
-ARG USE_PYTHON_3_NOT_2=1
+ARG USE_PYTHON_3_NOT_2
 ARG _PY_SUFFIX=${USE_PYTHON_3_NOT_2:+3}
 ARG PYTHON=python${_PY_SUFFIX}
 ARG PIP=pip${_PY_SUFFIX}
@@ -76,8 +76,10 @@ RUN ${PIP} install ${TF_PACKAGE}${TF_PACKAGE_VERSION:+==${TF_PACKAGE_VERSION}}
 COPY bashrc /etc/bash.bashrc
 RUN chmod a+rwx /etc/bash.bashrc
 
-RUN ${PIP} install jupyter matplotlib
-RUN ${PIP} install jupyter_http_over_ws
+ARG REQUIREMENTS
+COPY ${REQUIREMENTS} /resources/requirements.txt
+RUN ${PIP} install -r /resources/requirements.txt
+
 RUN jupyter serverextension enable --py jupyter_http_over_ws
 
 RUN mkdir -p /tf/tensorflow-tutorials && chmod -R a+rwx /tf/
@@ -96,10 +98,6 @@ WORKDIR /tf
 EXPOSE 8888
 
 RUN ${PYTHON} -m ipykernel.kernelspec
-
-RUN ${PIP} install torch torchvision tensorboardX
-
-RUN ${PIP} install jupyterthemes
 
 RUN jt -t chesterish -T -N
 

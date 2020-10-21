@@ -1,0 +1,9 @@
+version: '3.5'
+
+# for https://github.com/MyChocer/KGTN
+services:
+    ai-notebook:
+      build:
+        args:
+            - USE_PYTHON_3_NOT_2=0
+            - REQUIREMENTS=/resources/requirements-KGTN.txt
