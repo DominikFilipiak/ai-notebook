@@ -23,17 +23,20 @@ Requires Docker (>=19.03), NVIDIA driver and nvidia-docker (see how to install i
 ## Usage
 Use the following command to run the notebook:
 ```bash
-docker run --gpus all -p 8888:8888 -p 6006:6006 -v /your/directory:/tf/work -d 0xdfdfdf/ai-notebook
+docker-compose up 
 ```
-Naturally, replace ```/your/directory``` with a path you want to access through notebook (it'll be in the ```work``` directory).
-Now navigate to http://127.0.0.1:8888.
+If you want to make your adjustments (like I do with the KGTN repo):
+```bash
+docker-compose -f docker-compose.yml -f docker-compose-KGTN.yml up 
+```
+Now navigate to http://127.0.0.1:18888.
 The default password is: *Cybermyszki7*
 
 The following code will fire up tensorboard:
 ```bash
-docker exec -it 9c9 tensorboard --logdir=/tf/logs --bind_all
+docker exec -it [container_name] tensorboard --logdir=/tf/logs --bind_all
 ```
-Now you can navigate to http://127.0.0.1:6006 to access tensorboard.
+Now you can navigate to http://127.0.0.1:16006 to access tensorboard.
 
 ## Additional information
 You can change the default password.
