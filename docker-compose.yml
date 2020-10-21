@@ -1,7 +1,8 @@
-version: '3.5'
+version: '2.3'
 
 services:
     ai-notebook:
+      runtime: nvidia
       container_name: ai-notebook
       image: 0xdfdfdf/ai-notebook
       build:
@@ -15,3 +16,5 @@ services:
       ports:
         - 18888:8888
         - 16006:6006
+      environment:
+        - NVIDIA_VISIBLE_DEVICES=all
