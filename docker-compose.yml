@@ -11,8 +11,7 @@ services:
         args:
             - USE_PYTHON_3_NOT_2=1
             - REQUIREMENTS=/resources/requirements.txt
-      volumes:
-        - ~:/tf/work
+      ipc: host  # weird problems with pytorch without this
       ports:
         - 18888:8888
         - 16006:6006
