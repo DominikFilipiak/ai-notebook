@@ -43,8 +43,9 @@ RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/lib
     && echo "/usr/local/cuda/lib64/stubs" > /etc/ld.so.conf.d/z-cuda-stubs.conf \
     && ldconfig
 
-ARG USE_PYTHON_3_NOT_2
-ARG _PY_SUFFIX=${USE_PYTHON_3_NOT_2:+3}
+# ARG USE_PYTHON_3_NOT_2=
+# ARG _PY_SUFFIX=${USE_PYTHON_3_NOT_2:+3}
+ARG _PY_SUFFIX=
 ARG PYTHON=python${_PY_SUFFIX}
 ARG PIP=pip${_PY_SUFFIX}
 
