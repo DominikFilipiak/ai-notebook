@@ -45,7 +45,8 @@ RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/lib
 
 # ARG USE_PYTHON_3_NOT_2=
 # ARG _PY_SUFFIX=${USE_PYTHON_3_NOT_2:+3}
-ARG _PY_SUFFIX=
+# REPLACE THIS FOR NOTHING FOR PYTHON 2
+ARG _PY_SUFFIX=3 
 ARG PYTHON=python${_PY_SUFFIX}
 ARG PIP=pip${_PY_SUFFIX}
 
@@ -100,7 +101,7 @@ EXPOSE 8888
 
 RUN ${PYTHON} -m ipykernel.kernelspec
 
-RUN jt -t chesterish -T -N
+RUN jt -t onedork -T -N
 
 RUN echo "c.NotebookApp.password='sha1:9f94b40a5367:4ac7ee93d6115e200be852302429db4816bcfd61'">>/root/.jupyter/jupyter_notebook_config.py
 
